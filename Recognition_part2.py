@@ -8,7 +8,7 @@ import warnings
 from cv2 import VideoCapture
 
 warnings.filterwarnings(action='ignore')
-data_path='C:/Users/ROHIT BHATTACHARYYA/OneDrive/Desktop/Images/'
+data_path='C:/Users/HP/OneDrive/Desktop/Images/'
 onlyfiles=[f for f in listdir(data_path) if isfile(join(data_path,f))]
 Training_data,Labels=[],[]
 for i, files in enumerate(onlyfiles):
@@ -17,7 +17,7 @@ for i, files in enumerate(onlyfiles):
     Training_data.append(np.asarray(images,dtype=np.uint8))
     Labels.append(i)
 Labels=np.asarray(Labels,dtype=np.int32)
-model =cv2.face.EigenFaceRecognizer_create()
+
 model =cv2.face.LBPHFaceRecognizer_create()
 model .train(np.asarray(Training_data),np.asarray(Labels))
 print("Model Training Complete")
